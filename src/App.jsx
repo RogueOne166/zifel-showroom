@@ -1,5 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
+import headerImage from "./assets/header.jpg";
+
 import {
   ArrowRight,
   MapPin,
@@ -62,23 +64,20 @@ export default function App() {
         margin: 0,
         padding: 0,
         overflowX: "hidden",
-        backgroundColor: "#0a0a0a",
-        color: "white",
+        backgroundColor: "#f7f5f2",
+        color: "#171717",
         fontFamily: "Arial, sans-serif",
-        position: "relative",
-        left: "50%",
-        right: "50%",
-        marginLeft: "-50vw",
-        marginRight: "-50vw",
       }}
     >
+      {/* HEADER */}
       <header
         style={{
           position: "sticky",
           top: 0,
           zIndex: 50,
-          background: "#0a0a0a",
-          backdropFilter: "blur(10px)",
+          background: "rgba(255,255,255,0.92)",
+          backdropFilter: "blur(12px)",
+          boxShadow: "0 1px 20px rgba(0,0,0,0.06)",
         }}
       >
         <div
@@ -91,31 +90,55 @@ export default function App() {
             boxSizing: "border-box",
           }}
         >
-          <h1 style={{ fontSize: "28px", fontWeight: "bold" }}>Zifel</h1>
+          <h1
+            style={{
+              fontSize: "28px",
+              fontWeight: "bold",
+              color: "#111",
+            }}
+          >
+            Zifel
+          </h1>
 
-          <nav style={{ display: "flex", gap: "30px", fontSize: "15px" }}>
-            <a href="#products" style={{ color: "white", textDecoration: "none" }}>
-              Products
-            </a>
-            <a href="#about" style={{ color: "white", textDecoration: "none" }}>
-              About
-            </a>
-            <a href="#contact" style={{ color: "white", textDecoration: "none" }}>
-              Contact
-            </a>
+          <nav
+            style={{
+              display: "flex",
+              gap: "30px",
+              fontSize: "15px",
+            }}
+          >
+            {["Products", "About", "Contact"].map((item) => (
+              <a
+                key={item}
+                href={`#${item.toLowerCase()}`}
+                style={{
+                  color: "#222",
+                  textDecoration: "none",
+                  fontWeight: 600,
+                }}
+              >
+                {item}
+              </a>
+            ))}
           </nav>
         </div>
       </header>
 
-      <section style={{ position: "relative", height: "700px", overflow: "hidden" }}>
+      {/* HERO */}
+      <section
+        style={{
+          position: "relative",
+          height: "700px",
+          overflow: "hidden",
+        }}
+      >
         <img
-          src="https://img.freepik.com/premium-photo/travel-concept-with-luggages-assortment_23-2149030586.jpg"
+          src={headerImage}
           alt="Travel"
           style={{
             width: "100%",
             height: "100%",
             objectFit: "cover",
-            opacity: 0.45,
           }}
         />
 
@@ -124,7 +147,7 @@ export default function App() {
             position: "absolute",
             inset: 0,
             background:
-              "linear-gradient(to right, rgba(10,10,10,1), rgba(10,10,10,0.75), rgba(10,10,10,0.15))",
+              "linear-gradient(to right, rgba(255,255,255,0.95), rgba(255,255,255,0.72), rgba(255,255,255,0.15))",
           }}
         />
 
@@ -142,15 +165,17 @@ export default function App() {
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            style={{ maxWidth: "650px" }}
+            style={{ maxWidth: "680px" }}
           >
             <p
               style={{
                 display: "inline-block",
                 padding: "10px 18px",
                 borderRadius: "999px",
-                background: "rgba(255,255,255,0.12)",
+                background: "rgba(0,0,0,0.06)",
+                color: "#333",
                 marginBottom: "20px",
+                fontWeight: 600,
               }}
             >
               Luggage showroom based in France
@@ -162,6 +187,7 @@ export default function App() {
                 lineHeight: 1.1,
                 fontWeight: "bold",
                 marginBottom: "25px",
+                color: "#111",
               }}
             >
               Travel smarter with elegant luggage.
@@ -170,7 +196,7 @@ export default function App() {
             <p
               style={{
                 fontSize: "20px",
-                color: "#d1d5db",
+                color: "#444",
                 lineHeight: 1.7,
                 marginBottom: "35px",
               }}
@@ -179,11 +205,17 @@ export default function App() {
               present suitcases, bags and travel accessories clearly.
             </p>
 
-            <div style={{ display: "flex", gap: "15px", flexWrap: "wrap" }}>
+            <div
+              style={{
+                display: "flex",
+                gap: "15px",
+                flexWrap: "wrap",
+              }}
+            >
               <button
                 style={{
-                  background: "white",
-                  color: "black",
+                  background: "#111",
+                  color: "white",
                   border: "none",
                   padding: "15px 28px",
                   borderRadius: "999px",
@@ -199,12 +231,13 @@ export default function App() {
 
               <button
                 style={{
-                  background: "transparent",
-                  color: "white",
-                  border: "1px solid rgba(255,255,255,0.25)",
+                  background: "white",
+                  color: "#111",
+                  border: "1px solid #d4d4d4",
                   padding: "15px 28px",
                   borderRadius: "999px",
                   cursor: "pointer",
+                  fontWeight: 600,
                 }}
               >
                 Contact Us
@@ -214,6 +247,7 @@ export default function App() {
         </div>
       </section>
 
+      {/* CATEGORIES */}
       <section
         style={{
           width: "100%",
@@ -222,7 +256,7 @@ export default function App() {
           gridTemplateColumns: "repeat(auto-fit,minmax(250px,1fr))",
           gap: "25px",
           boxSizing: "border-box",
-          background: "#0a0a0a",
+          background: "#f7f5f2",
         }}
       >
         {categories.map((item) => {
@@ -232,9 +266,10 @@ export default function App() {
             <div
               key={item.title}
               style={{
-                background: "rgba(255,255,255,0.05)",
+                background: "white",
                 borderRadius: "24px",
                 padding: "35px",
+                boxShadow: "0 4px 20px rgba(0,0,0,0.05)",
               }}
             >
               <div
@@ -242,31 +277,45 @@ export default function App() {
                   width: "60px",
                   height: "60px",
                   borderRadius: "20px",
-                  background: "rgba(255,255,255,0.08)",
+                  background: "#f1f1f1",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
                   marginBottom: "20px",
                 }}
               >
-                <Icon size={28} />
+                <Icon size={28} color="#111" />
               </div>
 
-              <h3 style={{ fontSize: "24px", marginBottom: "12px" }}>
+              <h3
+                style={{
+                  fontSize: "24px",
+                  marginBottom: "12px",
+                  color: "#111",
+                }}
+              >
                 {item.title}
               </h3>
 
-              <p style={{ color: "#9ca3af", lineHeight: 1.7 }}>{item.text}</p>
+              <p
+                style={{
+                  color: "#666",
+                  lineHeight: 1.7,
+                }}
+              >
+                {item.text}
+              </p>
             </div>
           );
         })}
       </section>
 
+      {/* PRODUCTS */}
       <section
         id="products"
         style={{
           width: "100%",
-          background: "#e9e7e4",
+          background: "#ece8e3",
           color: "#111111",
           padding: "100px 60px",
           boxSizing: "border-box",
@@ -310,9 +359,10 @@ export default function App() {
               whileHover={{ y: -10 }}
               transition={{ type: "spring", stiffness: 220 }}
               style={{
-                background: "#f1efec",
+                background: "white",
                 borderRadius: "30px",
                 overflow: "hidden",
+                boxShadow: "0 6px 20px rgba(0,0,0,0.06)",
               }}
             >
               <img
@@ -327,11 +377,22 @@ export default function App() {
               />
 
               <div style={{ padding: "30px" }}>
-                <p style={{ color: "#6b7280", marginBottom: "10px" }}>
+                <p
+                  style={{
+                    color: "#6b7280",
+                    marginBottom: "10px",
+                  }}
+                >
                   {product.category}
                 </p>
 
-                <h3 style={{ fontSize: "30px", marginBottom: "20px" }}>
+                <h3
+                  style={{
+                    fontSize: "30px",
+                    marginBottom: "20px",
+                    color: "#111",
+                  }}
+                >
                   {product.name}
                 </h3>
 
@@ -342,7 +403,9 @@ export default function App() {
                     alignItems: "center",
                   }}
                 >
-                  <span style={{ fontWeight: "bold" }}>{product.price}</span>
+                  <span style={{ fontWeight: "bold" }}>
+                    {product.price}
+                  </span>
 
                   <button
                     style={{
@@ -362,6 +425,7 @@ export default function App() {
         </div>
       </section>
 
+      {/* ABOUT */}
       <section
         id="about"
         style={{
@@ -372,7 +436,7 @@ export default function App() {
           gap: "60px",
           alignItems: "center",
           boxSizing: "border-box",
-          background: "#0a0a0a",
+          background: "#f7f5f2",
         }}
       >
         <div>
@@ -387,7 +451,13 @@ export default function App() {
             About Zifel
           </p>
 
-          <h2 style={{ fontSize: "56px", lineHeight: 1.2 }}>
+          <h2
+            style={{
+              fontSize: "56px",
+              lineHeight: 1.2,
+              color: "#111",
+            }}
+          >
             A modern brand presentation for luggage products.
           </h2>
         </div>
@@ -395,7 +465,7 @@ export default function App() {
         <div>
           <p
             style={{
-              color: "#d1d5db",
+              color: "#444",
               lineHeight: 1.9,
               fontSize: "18px",
               marginBottom: "25px",
@@ -407,16 +477,22 @@ export default function App() {
 
           <div
             style={{
-              background: "rgba(255,255,255,0.05)",
+              background: "white",
               borderRadius: "24px",
               padding: "30px",
               display: "flex",
               gap: "20px",
+              boxShadow: "0 4px 20px rgba(0,0,0,0.05)",
             }}
           >
-            <ShieldCheck size={30} />
+            <ShieldCheck size={30} color="#111" />
 
-            <p style={{ color: "#d1d5db", lineHeight: 1.8 }}>
+            <p
+              style={{
+                color: "#444",
+                lineHeight: 1.8,
+              }}
+            >
               Later I can add product filtering, admin dashboard, animations,
               multilingual support, contact forms and real Zifel inventory.
             </p>
@@ -424,52 +500,91 @@ export default function App() {
         </div>
       </section>
 
+      {/* CONTACT */}
       <section
         id="contact"
         style={{
           width: "100%",
-          background: "#111111",
+          background: "#ece8e3",
           padding: "100px 60px",
           boxSizing: "border-box",
         }}
       >
         <div
           style={{
-            background: "rgba(255,255,255,0.05)",
+            background: "white",
             borderRadius: "32px",
             padding: "50px",
+            boxShadow: "0 4px 20px rgba(0,0,0,0.05)",
           }}
         >
-          <h2 style={{ fontSize: "48px", marginBottom: "20px" }}>
+          <h2
+            style={{
+              fontSize: "48px",
+              marginBottom: "20px",
+              color: "#111",
+            }}
+          >
             Ready to present the showroom?
           </h2>
 
-          <p style={{ color: "#d1d5db", marginBottom: "40px" }}>
+          <p
+            style={{
+              color: "#444",
+              marginBottom: "40px",
+            }}
+          >
             This section can later become the official contact area.
           </p>
 
-          <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-            <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "20px",
+              color: "#111",
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "12px",
+              }}
+            >
               <MapPin size={20} /> France
             </div>
 
-            <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "12px",
+              }}
+            >
               <Mail size={20} /> contact@zifel.fr
             </div>
 
-            <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "12px",
+              }}
+            >
               <Phone size={20} /> +33 0 00 00 00 00
             </div>
           </div>
         </div>
       </section>
 
+      {/* FOOTER */}
       <footer
         style={{
           textAlign: "center",
           padding: "30px",
           color: "#6b7280",
-          background: "#0a0a0a",
+          background: "#f7f5f2",
         }}
       >
         © 2026 Zifel — Showroom Prototype by HMSK_CREATIVE

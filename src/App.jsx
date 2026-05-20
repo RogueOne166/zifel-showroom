@@ -60,7 +60,7 @@ export default function App() {
     <div
       style={{
         minHeight: "100vh",
-        width: "100vw",
+        width: "100%",
         margin: 0,
         padding: 0,
         overflowX: "hidden",

@@ -24,7 +24,7 @@ const products = [
       "https://cdnphotos.fastmag.fr/photos/116/1200x1200/td193.50cm/rose%20gold/1/photo.jpg",
   },
   {
-    name: "Business Backpack",
+    name: "Business Luggage",
     category: "Work",
     price: "From €59",
     image:

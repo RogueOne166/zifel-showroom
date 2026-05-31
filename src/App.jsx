@@ -4,6 +4,7 @@ import headerImage from "./assets/header.jpg";
 import { Routes, Route, Link } from "react-router-dom";
 import Produits from "./pages/Produits";
 import APropos from "./pages/APropos";
+import Marques from "./pages/Marques";
 
 import {
   ArrowRight,
@@ -68,7 +69,7 @@ function Accueil() {
 
   const navItems = [
     { name: "Accueil", href: "#home" },
-    { name: "Notre métier", href: "#services" },
+    { name: "Marques", href: "/marques" },
     { name: "Produits", href: "/produits" },
     { name: "À propos", href: "/a-propos" },
     { name: "Contact", href: "#contact" },
@@ -735,6 +736,7 @@ export default function App() {
       <Route path="/" element={<Accueil />} />
       <Route path="/produits" element={<Produits />} />
       <Route path="/a-propos" element={<APropos />} />
+      <Route path="/marques" element={<Marques />} />
     </Routes>
   );
 }

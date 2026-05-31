@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowLeft, ArrowRight, Sparkles } from "lucide-react";s
 import heroMarques from "../assets/hero-marques.jpg";
 
 const marques = [
@@ -32,6 +32,10 @@ const marques = [
 export default function Marques() {
   return (
     <main className="marques-page">
+    <Link to="/" className="back-link">
+	  <ArrowLeft size={18} />
+	  Retour à l'accueil
+     </Link>
       <section
         className="marques-hero"
         style={{
@@ -246,8 +250,49 @@ export default function Marques() {
 
         @media (max-width: 850px) {
           .marques-page {
-            padding-bottom: 70px;
+           min-height: 100vh;
+	   background: #fff;
+	   color: #111;
+	   padding: 0 0 90px;
+	   font-family: Arial, Helvetica, sans-serif;
+	   position: relative;
+	   
+	   .back-link {
+	      top: 80px;
+	      left: 20px;
+	      padding: 10px 16px;
+	      font-size: 14px;
+	    }
+             
           }
+          
+          .back-link {
+	  position: absolute;
+	  top: 100px;
+	  left: 40px;
+	  z-index: 100;
+
+	  display: flex;
+	  align-items: center;
+	  gap: 8px;
+
+	  color: white;
+	  text-decoration: none;
+	  font-weight: 700;
+
+	  background: rgba(255,255,255,0.15);
+	  backdrop-filter: blur(8px);
+
+	  padding: 12px 20px;
+	  border-radius: 999px;
+
+	  transition: all 0.3s ease;
+	}
+
+	.back-link:hover {
+	  background: rgba(255,255,255,0.25);
+	  transform: translateY(-2px);
+	}
 
           .marques-hero {
             min-height: 60vh;

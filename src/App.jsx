@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import headerImage from "./assets/header.jpg";
+import { Routes, Route, Link } from "react-router-dom";
+import Produits from "./pages/Produits";
 
 import {
   ArrowRight,
@@ -60,13 +62,13 @@ const stats = [
   { value: "France", label: "Entreprise basée en France" },
 ];
 
-export default function App() {
+function Accueil() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const navItems = [
     { name: "Accueil", href: "#home" },
     { name: "Notre métier", href: "#services" },
-    { name: "Produits", href: "#products" },
+    { name: "Produits", href: "/produits" },
     { name: "À propos", href: "#about" },
     { name: "Contact", href: "#contact" },
   ];
@@ -75,16 +77,22 @@ export default function App() {
     <div className="site">
       <header className="header">
         <div className="header-inner">
-          <a href="#home" className="logo">
+          <Link to="/" className="logo">
             ZIFEL
-          </a>
+          </Link>
 
           <nav className="desktop-nav">
-            {navItems.map((item) => (
-              <a key={item.name} href={item.href}>
-                {item.name}
-              </a>
-            ))}
+            {navItems.map((item) =>
+              item.href.startsWith("/") ? (
+                <Link key={item.name} to={item.href}>
+                  {item.name}
+                </Link>
+              ) : (
+                <a key={item.name} href={item.href}>
+                  {item.name}
+                </a>
+              )
+            )}
           </nav>
 
           <button
@@ -97,15 +105,25 @@ export default function App() {
 
           {menuOpen && (
             <div className="mobile-dropdown">
-              {navItems.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  onClick={() => setMenuOpen(false)}
-                >
-                  {item.name}
-                </a>
-              ))}
+              {navItems.map((item) =>
+                item.href.startsWith("/") ? (
+                  <Link
+                    key={item.name}
+                    to={item.href}
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
+                ) : (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    {item.name}
+                  </a>
+                )
+              )}
             </div>
           )}
         </div>
@@ -134,9 +152,9 @@ export default function App() {
             </p>
 
             <div className="hero-buttons">
-              <a href="#products" className="btn-dark">
+              <Link to="/produits" className="btn-dark">
                 Découvrir nos produits <ArrowRight size={18} />
-              </a>
+              </Link>
 
               <a href="#contact" className="btn-light">
                 Nous contacter
@@ -706,5 +724,15 @@ export default function App() {
         }
       `}</style>
     </div>
+  );
+}
+
+
+export default function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<Accueil />} />
+      <Route path="/produits" element={<Produits />} />
+    </Routes>
   );
 }

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowLeft, ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 import heroMarques from "../assets/hero-marques.jpg";
 
 const marques = [
@@ -32,31 +32,26 @@ const marques = [
 export default function Marques() {
   return (
     <main className="marques-page">
-      <Link to="/" className="back-link">
-        <ArrowLeft size={18} />
-        Retour à l’accueil
-      </Link>
-
       <section
-	  className="marques-hero"
-	  style={{
-	    backgroundImage: `linear-gradient(
-	      rgba(0,0,0,0.45),
-	      rgba(0,0,0,0.45)
-	    ), url(${heroMarques})`,
-	  }}
-	>
-	  <div className="marques-hero-overlay">
-	    <p className="hero-label">Nos marques partenaires</p>
+        className="marques-hero"
+        style={{
+          backgroundImage: `linear-gradient(
+            rgba(0,0,0,0.25),
+            rgba(0,0,0,0.25)
+          ), url(${heroMarques})`,
+        }}
+      >
+        <div className="marques-hero-overlay">
+          <p className="hero-label">Nos marques partenaires</p>
 
-	    <h1>Des marques qui accompagnent chaque voyage.</h1>
+          <h1>Des marques qui accompagnent chaque voyage.</h1>
 
-	    <p>
-	      Découvrez les collections et univers sélectionnés par Zifel
-	      pour répondre aux besoins des voyageurs modernes.
-	    </p>
-	  </div>
-	</section>
+          <p>
+            Découvrez les collections et univers sélectionnés par Zifel pour
+            répondre aux besoins des voyageurs modernes.
+          </p>
+        </div>
+      </section>
 
       <section className="marques-grid">
         {marques.map((marque) => (
@@ -94,66 +89,51 @@ export default function Marques() {
           min-height: 100vh;
           background: #fff;
           color: #111;
-          padding: 40px clamp(20px, 6vw, 80px) 90px;
+          padding: 0 0 90px;
           font-family: Arial, Helvetica, sans-serif;
         }
 
-        .back-link {
-          display: inline-flex;
+        .marques-hero {
+          width: 100vw;
+          min-height: 80vh;
+          margin-left: calc(50% - 50vw);
+          margin-bottom: 80px;
+          display: flex;
           align-items: center;
-          gap: 8px;
-          margin-bottom: 45px;
-          color: #111;
-          text-decoration: none;
-          font-weight: 800;
+          justify-content: center;
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+          position: relative;
         }
 
-	.marques-hero {
-	  width: 100vw;
-	  min-height: 70vh;
+        .marques-hero-overlay {
+          width: 100%;
+          max-width: 1200px;
+          padding: 0 40px;
+          color: white;
+        }
 
-	  margin-left: calc(50% - 50vw);
-	  margin-bottom: 70px;
+        .hero-label {
+          text-transform: uppercase;
+          letter-spacing: 4px;
+          font-weight: 700;
+          margin-bottom: 20px;
+        }
 
-	  display: flex;
-	  align-items: center;
-	  justify-content: center;
+        .marques-hero h1 {
+          font-size: clamp(3rem, 7vw, 6rem);
+          line-height: 0.95;
+          font-weight: 900;
+          max-width: 900px;
+          margin: 0 0 24px;
+        }
 
-	  background-size: cover;
-	  background-position: center;
-
-	  position: relative;
-	}
-
-	.marques-hero-overlay {
-	  width: 100%;
-	  max-width: 1200px;
-	  padding: 0 40px;
-	  color: white;
-	}
-
-	.hero-label {
-	  text-transform: uppercase;
-	  letter-spacing: 4px;
-	  font-weight: 700;
-	  margin-bottom: 20px;
-	}
-
-	.marques-hero h1 {
-	  font-size: clamp(3rem, 7vw, 6rem);
-	  line-height: 0.95;
-	  font-weight: 900;
-
-	  max-width: 900px;
-
-	  margin-bottom: 24px;
-	}
-
-	.marques-hero p {
-	  font-size: clamp(1rem, 2vw, 1.3rem);
-	  max-width: 700px;
-	  line-height: 1.7;
-	}
+        .marques-hero p {
+          font-size: clamp(1rem, 2vw, 1.3rem);
+          max-width: 700px;
+          line-height: 1.7;
+        }
 
         .small-title {
           text-transform: uppercase;
@@ -162,6 +142,12 @@ export default function Marques() {
           font-size: 13px;
           font-weight: 800;
           margin-bottom: 18px;
+        }
+
+        .marques-grid,
+        .marques-banner {
+          margin-left: clamp(20px, 6vw, 80px);
+          margin-right: clamp(20px, 6vw, 80px);
         }
 
         .marques-grid {
@@ -260,26 +246,32 @@ export default function Marques() {
 
         @media (max-width: 850px) {
           .marques-page {
-            padding: 25px 18px 70px;
+            padding-bottom: 70px;
           }
 
           .marques-hero {
-		  min-height: 70vh;
-
-		}
-
-		.marques-hero-overlay {
-		  padding: 0 20px;
-
-		  
-		}
-
-		.marques-hero h1 {
-		  font-size: 3rem;
-		}
-
-
+            min-height: 60vh;
           }
+
+          .marques-hero-overlay {
+            padding: 0 20px;
+          }
+
+          .marques-hero h1 {
+            font-size: 3rem;
+          }
+
+          .marques-grid,
+          .marques-banner {
+            margin-left: 18px;
+            margin-right: 18px;
+          }
+
+          .marques-banner {
+            flex-direction: column;
+            align-items: flex-start;
+          }
+        }
       `}</style>
     </main>
   );

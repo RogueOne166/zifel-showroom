@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowLeft, ArrowRight, Sparkles } from "lucide-react";
+import heroMarques from "../assets/hero-marques.jpg";
 
 const marques = [
   {
@@ -36,13 +37,26 @@ export default function Marques() {
         Retour à l’accueil
       </Link>
 
-      <section className="marques-hero">
-        <p className="small-title">Nos marques</p>
-        <h1>Des univers de bagagerie pour chaque voyageur.</h1>
-        <p>
-          Zifel présente différentes marques et collections autour de la valise,
-          du sac de voyage et des accessoires de mobilité.
-        </p>
+      <section
+        className="marques-hero"
+        style={{
+          backgroundImage: `linear-gradient(
+            rgba(0,0,0,0.45),
+            rgba(0,0,0,0.45)
+          ), url(${heroMarques})`,
+        }}
+      >
+        <div className="marques-hero-content">
+          <p className="hero-label">Nos marques partenaires</p>
+
+          <h1>Un univers de marques reconnues</h1>
+
+          <p>
+            Zifel collabore avec des marques fortes et variées afin de proposer
+            une offre complète de bagagerie, sacs de voyage et accessoires
+            adaptés à tous les styles.
+          </p>
+        </div>
       </section>
 
       <section className="marques-grid">
@@ -66,7 +80,9 @@ export default function Marques() {
       <section className="marques-banner">
         <div>
           <p className="small-title">Showroom</p>
-          <h2>Une sélection pensée pour être claire, moderne et professionnelle.</h2>
+          <h2>
+            Une sélection pensée pour être claire, moderne et professionnelle.
+          </h2>
         </div>
 
         <Link to="/produits" className="banner-btn">
@@ -93,6 +109,46 @@ export default function Marques() {
           font-weight: 800;
         }
 
+        .marques-hero {
+          min-height: 500px;
+          display: flex;
+          align-items: center;
+          padding: 80px;
+          border-radius: 32px;
+          background-size: cover;
+          background-position: center;
+          color: white;
+          margin-bottom: 70px;
+        }
+
+        .marques-hero-content {
+          max-width: 720px;
+        }
+
+        .hero-label {
+          text-transform: uppercase;
+          letter-spacing: 3px;
+          font-size: 14px;
+          font-weight: 800;
+          margin-bottom: 18px;
+          color: rgba(255, 255, 255, 0.85);
+        }
+
+        .marques-hero h1 {
+          font-size: clamp(46px, 7vw, 86px);
+          line-height: 1;
+          margin: 0 0 26px;
+          font-weight: 900;
+          color: white;
+        }
+
+        .marques-hero p {
+          color: rgba(255, 255, 255, 0.9);
+          font-size: 20px;
+          line-height: 1.7;
+          max-width: 760px;
+        }
+
         .small-title {
           text-transform: uppercase;
           letter-spacing: 5px;
@@ -100,25 +156,6 @@ export default function Marques() {
           font-size: 13px;
           font-weight: 800;
           margin-bottom: 18px;
-        }
-
-        .marques-hero {
-          max-width: 1000px;
-          margin-bottom: 70px;
-        }
-
-        .marques-hero h1 {
-          font-size: clamp(46px, 7vw, 90px);
-          line-height: 1;
-          margin: 0 0 26px;
-          font-weight: 900;
-        }
-
-        .marques-hero p {
-          color: #555;
-          font-size: 20px;
-          line-height: 1.7;
-          max-width: 760px;
         }
 
         .marques-grid {
@@ -216,12 +253,31 @@ export default function Marques() {
         }
 
         @media (max-width: 850px) {
+          .marques-page {
+            padding: 25px 18px 70px;
+          }
+
+          .marques-hero {
+            min-height: 430px;
+            padding: 38px 24px;
+            border-radius: 24px;
+          }
+
+          .marques-hero h1 {
+            font-size: 42px;
+          }
+
+          .marques-hero p {
+            font-size: 17px;
+          }
+
           .marques-banner {
             flex-direction: column;
             align-items: flex-start;
           }
 
-          .small-title {
+          .small-title,
+          .hero-label {
             letter-spacing: 3px;
           }
         }

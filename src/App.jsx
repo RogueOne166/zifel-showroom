@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import headerImage from "./assets/header.jpg";
 import { Routes, Route, Link } from "react-router-dom";
 import Produits from "./pages/Produits";
+import APropos from "./pages/APropos";
 
 import {
   ArrowRight,
@@ -733,6 +734,7 @@ export default function App() {
     <Routes>
       <Route path="/" element={<Accueil />} />
       <Route path="/produits" element={<Produits />} />
+      <Route path="/a-propos" element={<APropos />} />
     </Routes>
   );
 }

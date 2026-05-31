@@ -40,27 +40,43 @@ export default function APropos() {
         <div className="about-card large">
           <h2>Notre mission</h2>
           <p>
-            Proposer une gamme de bagagerie claire, moderne et accessible,
-            adaptée aux besoins du quotidien comme aux voyages longue durée.
+	        Notre mission est de proposer des solutions de bagagerie modernes,
+	      fonctionnelles et accessibles. Nous sélectionnons des produits qui
+	      répondent aux attentes des voyageurs d’aujourd’hui, en privilégiant
+	      la qualité, le design et la praticité. Chaque collection est pensée
+              pour accompagner aussi bien les déplacements professionnels que les
+              voyages de loisirs.
           </p>
         </div>
 
         <div className="about-card">
           <Briefcase size={32} />
           <h3>Showroom professionnel</h3>
-          <p>Une présentation simple et premium des collections.</p>
+          <p>  Notre showroom met en valeur l’ensemble de nos collections dans un
+		  environnement clair et moderne. Il permet à nos partenaires et clients
+		  de découvrir facilement nos produits, leurs caractéristiques et les
+		  différentes gammes disponibles tout au long de l’année.
+  	</p>
         </div>
 
         <div className="about-card">
           <Globe size={32} />
           <h3>Vision voyage</h3>
-          <p>Des produits pensés pour accompagner chaque déplacement.</p>
+          <p>Nous croyons que chaque voyage mérite un équipement fiable et élégant.
+		  Notre vision est d’offrir des produits qui facilitent les déplacements
+		  tout en apportant confort, organisation et sérénité aux voyageurs,
+		  quelle que soit leur destination.
+  	</p>
         </div>
 
         <div className="about-card">
           <ShieldCheck size={32} />
           <h3>Qualité & confiance</h3>
-          <p>Des bagages pratiques, durables et adaptés aux utilisateurs.</p>
+          <p>La satisfaction de nos clients est au cœur de notre démarche.
+		  Nous accordons une attention particulière à la qualité des matériaux,
+		  à la durabilité des produits et à la fiabilité de nos services afin
+		  de construire une relation de confiance sur le long terme.
+	</p>
         </div>
       </section>
 

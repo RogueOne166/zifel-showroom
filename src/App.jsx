@@ -70,7 +70,7 @@ function Accueil() {
     { name: "Accueil", href: "#home" },
     { name: "Notre métier", href: "#services" },
     { name: "Produits", href: "/produits" },
-    { name: "À propos", href: "#about" },
+    { name: "À propos", href: "/a-propos" },
     { name: "Contact", href: "#contact" },
   ];
 

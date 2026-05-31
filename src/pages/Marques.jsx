@@ -38,26 +38,25 @@ export default function Marques() {
       </Link>
 
       <section
-        className="marques-hero"
-        style={{
-          backgroundImage: `linear-gradient(
-            rgba(0,0,0,0.45),
-            rgba(0,0,0,0.45)
-          ), url(${heroMarques})`,
-        }}
-      >
-        <div className="marques-hero-content">
-          <p className="hero-label">Nos marques partenaires</p>
+	  className="marques-hero"
+	  style={{
+	    backgroundImage: `linear-gradient(
+	      rgba(0,0,0,0.45),
+	      rgba(0,0,0,0.45)
+	    ), url(${heroMarques})`,
+	  }}
+	>
+	  <div className="marques-hero-overlay">
+	    <p className="hero-label">Nos marques partenaires</p>
 
-          <h1>Un univers de marques reconnues</h1>
+	    <h1>Des marques qui accompagnent chaque voyage.</h1>
 
-          <p>
-            Zifel collabore avec des marques fortes et variées afin de proposer
-            une offre complète de bagagerie, sacs de voyage et accessoires
-            adaptés à tous les styles.
-          </p>
-        </div>
-      </section>
+	    <p>
+	      Découvrez les collections et univers sélectionnés par Zifel
+	      pour répondre aux besoins des voyageurs modernes.
+	    </p>
+	  </div>
+	</section>
 
       <section className="marques-grid">
         {marques.map((marque) => (
@@ -109,45 +108,52 @@ export default function Marques() {
           font-weight: 800;
         }
 
-        .marques-hero {
-          min-height: 500px;
-          display: flex;
-          align-items: center;
-          padding: 80px;
-          border-radius: 32px;
-          background-size: cover;
-          background-position: center;
-          color: white;
-          margin-bottom: 70px;
-        }
+	.marques-hero {
+	  width: 100vw;
+	  min-height: 70vh;
 
-        .marques-hero-content {
-          max-width: 720px;
-        }
+	  margin-left: calc(50% - 50vw);
+	  margin-bottom: 70px;
 
-        .hero-label {
-          text-transform: uppercase;
-          letter-spacing: 3px;
-          font-size: 14px;
-          font-weight: 800;
-          margin-bottom: 18px;
-          color: rgba(255, 255, 255, 0.85);
-        }
+	  display: flex;
+	  align-items: center;
+	  justify-content: center;
 
-        .marques-hero h1 {
-          font-size: clamp(46px, 7vw, 86px);
-          line-height: 1;
-          margin: 0 0 26px;
-          font-weight: 900;
-          color: white;
-        }
+	  background-size: cover;
+	  background-position: center;
 
-        .marques-hero p {
-          color: rgba(255, 255, 255, 0.9);
-          font-size: 20px;
-          line-height: 1.7;
-          max-width: 760px;
-        }
+	  position: relative;
+	}
+
+	.marques-hero-overlay {
+	  width: 100%;
+	  max-width: 1200px;
+	  padding: 0 40px;
+	  color: white;
+	}
+
+	.hero-label {
+	  text-transform: uppercase;
+	  letter-spacing: 4px;
+	  font-weight: 700;
+	  margin-bottom: 20px;
+	}
+
+	.marques-hero h1 {
+	  font-size: clamp(3rem, 7vw, 6rem);
+	  line-height: 0.95;
+	  font-weight: 900;
+
+	  max-width: 900px;
+
+	  margin-bottom: 24px;
+	}
+
+	.marques-hero p {
+	  font-size: clamp(1rem, 2vw, 1.3rem);
+	  max-width: 700px;
+	  line-height: 1.7;
+	}
 
         .small-title {
           text-transform: uppercase;
@@ -258,29 +264,22 @@ export default function Marques() {
           }
 
           .marques-hero {
-            min-height: 430px;
-            padding: 38px 24px;
-            border-radius: 24px;
-          }
+		  min-height: 70vh;
 
-          .marques-hero h1 {
-            font-size: 42px;
-          }
+		}
 
-          .marques-hero p {
-            font-size: 17px;
-          }
+		.marques-hero-overlay {
+		  padding: 0 20px;
 
-          .marques-banner {
-            flex-direction: column;
-            align-items: flex-start;
-          }
+		  
+		}
 
-          .small-title,
-          .hero-label {
-            letter-spacing: 3px;
+		.marques-hero h1 {
+		  font-size: 3rem;
+		}
+
+
           }
-        }
       `}</style>
     </main>
   );

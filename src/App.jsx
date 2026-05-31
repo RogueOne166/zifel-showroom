@@ -55,8 +55,8 @@ const services = [
 ];
 
 const stats = [
-  { value: "100+", label: "Références produits" },
-  { value: "3", label: "Univers bagagerie" },
+  { value: "1000+", label: "Références produits" },
+  { value: "8", label: "Univers bagagerie" },
   { value: "France", label: "Entreprise basée en France" },
 ];
 

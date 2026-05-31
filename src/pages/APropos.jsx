@@ -1,5 +1,12 @@
 import { Link } from "react-router-dom";
-import { ArrowLeft, CheckCircle, Briefcase, Globe, ShieldCheck } from "lucide-react";
+import aboutHero from "../assets/about/about-hero.jpg";
+import {
+  ArrowLeft,
+  CheckCircle,
+  Briefcase,
+  Globe,
+  ShieldCheck,
+} from "lucide-react";
 
 export default function APropos() {
   return (
@@ -10,21 +17,31 @@ export default function APropos() {
       </Link>
 
       <section className="about-hero">
-        <p className="small-title">À propos de Zifel</p>
-        <h1>Une entreprise française dédiée à la bagagerie.</h1>
-        <p>
-          Zifel accompagne les voyageurs et les professionnels avec une sélection
-          de valises, sacs de voyage et accessoires pensés pour allier praticité,
-          design et fiabilité.
-        </p>
+        <img src={aboutHero} alt="Showroom Zifel" />
+
+        <div className="about-hero-overlay">
+          <p className="small-title">À propos de Zifel</p>
+
+          <h1>
+            L’univers de la
+            <br />
+            bagagerie moderne
+          </h1>
+
+          <p>
+            Zifel accompagne les voyageurs et les professionnels avec une
+            sélection de valises, sacs de voyage et accessoires pensés pour
+            allier praticité, design et fiabilité.
+          </p>
+        </div>
       </section>
 
       <section className="about-grid">
         <div className="about-card large">
           <h2>Notre mission</h2>
           <p>
-            Proposer une gamme de bagagerie claire, moderne et accessible, adaptée
-            aux besoins du quotidien comme aux voyages longue durée.
+            Proposer une gamme de bagagerie claire, moderne et accessible,
+            adaptée aux besoins du quotidien comme aux voyages longue durée.
           </p>
         </div>
 
@@ -86,7 +103,7 @@ export default function APropos() {
           display: inline-flex;
           align-items: center;
           gap: 8px;
-          margin-bottom: 48px;
+          margin-bottom: 35px;
           color: #111;
           text-decoration: none;
           font-weight: 800;
@@ -102,22 +119,53 @@ export default function APropos() {
         }
 
         .about-hero {
-          max-width: 950px;
-          margin-bottom: 70px;
+          position: relative;
+          height: 75vh;
+          min-height: 520px;
+          border-radius: 34px;
+          overflow: hidden;
+          margin-bottom: 80px;
         }
 
-        .about-hero h1 {
-          font-size: clamp(46px, 7vw, 86px);
+        .about-hero img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        .about-hero-overlay {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(
+            90deg,
+            rgba(0, 0, 0, 0.7) 0%,
+            rgba(0, 0, 0, 0.42) 45%,
+            rgba(0, 0, 0, 0.12) 100%
+          );
+          color: white;
+          padding: clamp(32px, 6vw, 80px);
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        }
+
+        .about-hero-overlay .small-title {
+          color: rgba(255, 255, 255, 0.8);
+        }
+
+        .about-hero-overlay h1 {
+          font-size: clamp(46px, 7vw, 92px);
           line-height: 1;
           margin: 0 0 26px;
           font-weight: 900;
+          max-width: 850px;
         }
 
-        .about-hero p {
-          color: #555;
-          font-size: 20px;
+        .about-hero-overlay p {
+          font-size: clamp(18px, 2vw, 22px);
           line-height: 1.7;
-          max-width: 780px;
+          max-width: 700px;
+          color: rgba(255, 255, 255, 0.9);
         }
 
         .about-grid {
@@ -197,6 +245,11 @@ export default function APropos() {
         }
 
         @media (max-width: 900px) {
+          .about-hero {
+            height: 62vh;
+            min-height: 430px;
+          }
+
           .about-grid {
             grid-template-columns: 1fr;
           }

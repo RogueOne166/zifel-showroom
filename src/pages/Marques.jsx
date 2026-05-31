@@ -4,19 +4,19 @@ import heroMarques from "../assets/hero-marques.jpg";
 
 const marques = [
   {
-    nom: "Madisson",
+    nom: "Chevignon",
     type: "Bagagerie urbaine",
     description:
       "Une marque pensée pour les voyageurs modernes avec des produits pratiques, accessibles et élégants.",
   },
   {
-    nom: "Travel One",
+    nom: "Redskins",
     type: "Voyage & mobilité",
     description:
       "Des collections adaptées aux courts séjours, aux longs voyages et aux déplacements du quotidien.",
   },
   {
-    nom: "David Jones",
+    nom: "Freegun",
     type: "Sacs & accessoires",
     description:
       "Une identité mode et fonctionnelle pour les sacs, accessoires et produits de transport.",

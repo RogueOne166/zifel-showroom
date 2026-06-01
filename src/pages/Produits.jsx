@@ -37,6 +37,12 @@ const collections = [
 export default function Produits() {
   return (
     <main className="products-page">
+    {/* Retour accueil */}
+	<div className="back-home">
+	  <Link to="/">
+	    ← Retour à l'accueil
+	  </Link>
+	</div>
       {/* HERO */}
       <section className="products-hero">
         <div>
@@ -434,6 +440,28 @@ export default function Produits() {
           font-weight: 900;
           display: inline-block;
         }
+        
+        .back-home {
+	  padding: 30px 40px 0;
+	}
+
+	.back-home a {
+	  display: inline-flex;
+	  align-items: center;
+	  gap: 8px;
+	  text-decoration: none;
+	  color: #111;
+	  font-weight: 700;
+	  padding: 12px 20px;
+	  border-radius: 999px;
+	  background: #f5f5f5;
+	  transition: 0.3s;
+	}
+
+	.back-home a:hover {
+	  background: #e9e9e9;
+	  transform: translateX(-3px);
+	}
 
         @media (max-width: 950px) {
           .products-hero,

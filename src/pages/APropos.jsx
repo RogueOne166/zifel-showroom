@@ -30,8 +30,7 @@ export default function APropos() {
 
           <p>
             Zifel accompagne les voyageurs et les professionnels avec une
-            sélection de valises, sacs de voyage et accessoires pensés pour
-            allier praticité, design et fiabilité.
+            sélection de valises, sacs de voyage et accessoires.
           </p>
         </div>
       </section>

@@ -24,11 +24,11 @@ const heroSlides = [
   {
     title: "Decouvrez notre nouveau concept",
     text:  "Un format pratique, moderne et pensé pour voyager léger.",
-    image: slides2,
+    image: slides1,
   },
   
   {
-    image: slides1,
+    image: slides2,
   },
   
   {

@@ -297,12 +297,12 @@ export default function Produits() {
 
 	.hero-slider {
 	  position: relative;
-	  width: min(1500px, 96vw);
-	  height: clamp(560px, 78vh, 850px);
-	  margin: 0 auto;
+	  width: 100vw;
+	  height: clamp(500px, 75vh, 750px);
+	  margin: 0;
 	  overflow: hidden;
-	  background: #f7f7f7;
-	  border-radius: 18px;
+	  background: #fff;
+	  border-radius: 0;
 	}
 
 	.hero-slide {
@@ -322,11 +322,11 @@ export default function Produits() {
 	.hero-slide img {
 	  width: 100%;
 	  height: 100%;
-	  object-fit: contain;
+	  object-fit: cover;
 	  object-position: center;
 	  display: block;
 	}
-
+	
 	.hero-overlay {
 	  position: absolute;
 	  inset: 0;
@@ -376,11 +376,11 @@ export default function Produits() {
 	@media (max-width: 620px) {
 	  .hero-slider {
 	    width: 100vw;
-	    margin-left: calc(50%-50vw)
 	    height: 540px;
+	    margin: 0;
 	    border-radius: 0;
-	    background: #f2f2f2;
 	  }
+	}
 
 	  .hero-slide img {
 	    width: 100%;

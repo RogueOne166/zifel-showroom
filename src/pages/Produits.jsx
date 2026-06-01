@@ -281,17 +281,19 @@ export default function Produits() {
 	.hero-slider {
 	  position: relative;
 	  width: 100%;
-	  height: 100vh;
+	  height: 68vh;
+	  max-height: 680px;
+	  min-height: 520px;
 	  overflow: hidden;
 	  background: #f7f7f7;
 	}
-	
-        .hero-slide {
-          position: absolute;
-          inset: 0;
-          opacity: 0;
-          animation: heroFade 15s infinite;
-        }
+
+	.hero-slide {
+	  position: absolute;
+	  inset: 0;
+	  opacity: 0;
+	  animation: heroFade 15s infinite;
+	}
 
 	.hero-slide img {
 	  width: 100%;
@@ -300,51 +302,80 @@ export default function Produits() {
 	  object-position: center;
 	}
 
-        .slide-1 {
-          animation-delay: 0s;
-        }
-
-        .slide-2 {
-          animation-delay: 5s;
-        }
-
-        .slide-3 {
-          animation-delay: 10s;
-        }
-
 	.hero-overlay {
 	  position: absolute;
 	  inset: 0;
 	  display: flex;
 	  flex-direction: column;
 	  justify-content: center;
-	  padding: clamp(30px, 7vw, 90px);
+	  padding: clamp(26px, 5vw, 70px);
 	  color: white;
-
 	  background: linear-gradient(
 	    90deg,
-	    rgba(0,0,0,0.45),
-	    rgba(0,0,0,0.15),
+	    rgba(0,0,0,0.42),
+	    rgba(0,0,0,0.12),
 	    rgba(0,0,0,0)
 	  );
 	}
 
-        .hero-overlay h1 {
-          font-size: clamp(60px, 9vw, 120px);
-          letter-spacing: -3px;
-          line-height: 0.95;
-          max-width: 850px;
-          margin: 0 0 24px;
-          font-weight: 950;
-          text-transform: uppercase;
-        }
+	.hero-overlay h1 {
+	  font-size: clamp(42px, 7vw, 86px);
+	  letter-spacing: -2px;
+	  line-height: 1;
+	  max-width: 760px;
+	  margin: 0 0 20px;
+	  font-weight: 950;
+	  text-transform: uppercase;
+	}
 
-        .hero-overlay p:last-child {
-          font-size: clamp(17px, 2vw, 24px);
-          line-height: 1.6;
-          max-width: 620px;
-          margin: 0;
-        }
+	.hero-overlay p:last-child {
+	  font-size: clamp(16px, 1.6vw, 21px);
+	  line-height: 1.5;
+	  max-width: 560px;
+	  margin: 0;
+	}
+
+	@media (max-width: 620px) {
+	  .hero-slider {
+	    height: 460px;
+	    min-height: 460px;
+	    max-height: 460px;
+	  }
+
+	  .hero-slide img {
+	    object-position: center;
+	  }
+
+	  .hero-overlay {
+	    justify-content: flex-end;
+	    padding: 0 22px 62px;
+	    background: linear-gradient(
+	      180deg,
+	      rgba(0,0,0,0.15),
+	      rgba(0,0,0,0.65)
+	    );
+	  }
+
+	  .hero-overlay h1 {
+	    font-size: clamp(34px, 11vw, 48px);
+	    line-height: 1.02;
+	    letter-spacing: -1px;
+	    max-width: 100%;
+	    margin-bottom: 14px;
+	  }
+
+	  .hero-overlay p:last-child {
+	    font-size: 15px;
+	    line-height: 1.45;
+	    max-width: 95%;
+	  }
+
+	  .small-title.white {
+	    font-size: 11px;
+	    letter-spacing: 3px;
+	    margin-bottom: 10px;
+	  }
+	}
 
         .slider-dots {
           position: absolute;

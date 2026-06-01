@@ -75,7 +75,7 @@ function Accueil() {
 
   const heroSlides = [
 	  {
-	    title: "Decouvrez notre nouveau concept",
+	    title: "Decouvrez notre valise compression",
 	    text: "Un format pratique, moderne et pensé pour voyager léger.",
 	    image: slides1,
 	  },

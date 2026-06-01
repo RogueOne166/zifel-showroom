@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 import flyerServices from "../assets/Flyer-animation-en-magasin-1.png";
 import flyerAnimations from "../assets/Flyer-animation-en-magasin-2.png";
 import heroMarques from "../assets/hero-marques.jpg";
@@ -6,7 +7,12 @@ import heroMarques from "../assets/hero-marques.jpg";
 export default function Services() {
   return (
     <main className="services-page">
-      {/* HERO */}
+
+	  <div className="back-home">
+	    <Link to="/">← Retour à l'accueil</Link>
+	  </div>
+
+	  {/* HERO */}
       <section className="services-hero">
         <div className="hero-text">
           <p className="small-title">Services Zifel</p>
@@ -313,6 +319,22 @@ export default function Services() {
 
 	.services-cta a:hover {
 	  background: #eaeaea;
+	}
+	
+	.back-home a {
+	  display: inline-block;
+	  padding: 10px 18px;
+	  border: 1px solid #111;
+	  border-radius: 999px;
+	  text-decoration: none;
+	  color: #111;
+	  font-weight: 600;
+	  transition: 0.3s;
+	}
+
+	.back-home a:hover {
+	  background: #111;
+	  color: white;
 	}
 
 	@media (max-width: 900px) {

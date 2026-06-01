@@ -18,24 +18,22 @@ import longBoardBag3 from "../assets/produits/LongBoardBag-3.jpeg";
 
 import slides1 from "../assets/produits/slides1.jpg";
 import slides2 from "../assets/produits/slides2.jpg";
-import slides3 from "../assets/produits/slides3.jpg";
+import slides from "../assets/produits/slides3.jpg";
 
 const heroSlides = [
   {
-    title: "Bagage cabine",
-    text: "Un format pratique, moderne et pensé pour voyager léger.",
-    image: slides3,
-  },
-  {
-    title: "Bagagerie long séjour",
-    text: "Des bagages pour accompagner les voyageurs pendant leurs vacances.",
+    title: "Decouvrez notre nouveau concept",
+    text:  "Un format pratique, moderne et pensé pour voyager léger.",
     image: slides2,
   },
+  
   {
-    title: "Sac voyage",
-    text: "Plusieurs coloris disponibles pour s’adapter à chaque style.",
     image: slides1,
   },
+  
+  {
+    image: slides3,
+  }
 ];
 
 const collections = [
@@ -82,7 +80,7 @@ export default function Produits() {
   useEffect(() => {
     const timer = setInterval(() => {
       setActiveSlide((current) => (current + 1) % heroSlides.length);
-    }, 4500);
+    }, 3000);
 
     return () => clearInterval(timer);
   }, []);

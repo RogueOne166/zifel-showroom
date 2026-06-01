@@ -19,12 +19,12 @@ const heroSlides = [
   {
     title: "Baggage cabine",
     text: "Un format pratique, moderne et pensé pour voyager léger.",
-    image: 2E0A5129,
+    image: luluSingle,
   },
   {
     title: "Baggagerie long sejour",
     text: "Des baggages pour accompagner les voyageurs pendant leur vacances.",
-    image: 2E0A0490,
+    image: chevignonSingle,
   },
   {
     title: "Collections colorées",

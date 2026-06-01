@@ -28,6 +28,7 @@ const heroSlides = [
   },
   
   {
+    title: "Nous avons pensé à tout",
     image: slides2,
   },
   

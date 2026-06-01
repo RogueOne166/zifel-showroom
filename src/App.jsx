@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import headerImage from "./assets/header.jpg";
 import { Routes, Route, Link } from "react-router-dom";
 import Produits from "./pages/Produits";
 import APropos from "./pages/APropos";
 import Services from "./pages/Services";
+
+import slides1 from "./assets/produits/slides1.png";
+import slides2 from "./assets/produits/slides2.png";
+import slides3 from "./assets/produits/slides3.png";
 
 import {
   ArrowRight,
@@ -66,7 +70,35 @@ const stats = [
 
 function Accueil() {
   const [menuOpen, setMenuOpen] = useState(false);
+  
+  const [activeSlide, setActiveSlide] = useState(0);
 
+  const heroSlides = [
+	  {
+	    title: "Decouvrez notre nouveau concept",
+	    text: "Un format pratique, moderne et pensé pour voyager léger.",
+	    image: slides1,
+	  },
+	  {
+	    title: "Nous avons pensé à tout",
+	    text: "Des collections modernes pour accompagner chaque voyage.",
+	    image: slides2,
+	  },
+	  {
+	    title: "Zifel showroom",
+	    text: "Une sélection claire, professionnelle et adaptée aux voyageurs.",
+	    image: slides3,
+	  },
+    ];
+
+     useEffect(() => {
+	  const timer = setInterval(() => {
+	    setActiveSlide((current) => (current + 1) % heroSlides.length);
+	  }, 3000);
+
+	  return () => clearInterval(timer);
+       }, []);
+  
   const navItems = [
     { name: "Accueil", href: "#home" },
     { name: "Services", href: "/services" },
@@ -131,40 +163,45 @@ function Accueil() {
         </div>
       </header>
 
-      <section id="home" className="hero">
-        <img src={headerImage} alt="Bagagerie Zifel" className="hero-img" />
-        <div className="hero-overlay" />
+	<section id="home" className="home-hero-slider">
+	  {heroSlides.map((slide, index) => (
+	    <div
+	      className={`home-hero-slide ${index === activeSlide ? "active" : ""}`}
+	      key={index}
+	    >
+	      <img src={slide.image} alt={slide.title || "Zifel slider"} />
 
-        <div className="hero-content">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-          >
-            <p className="tag">Bagagerie • Voyage • Distribution</p>
+	      <div className="home-hero-overlay">
+		<div className="home-hero-content">
+		  <p className="tag">Bagagerie • Voyage • Distribution</p>
+		  <h1>{slide.title}</h1>
+		  <p className="hero-text">{slide.text}</p>
 
-            <h1>
-              Des solutions de bagagerie pour accompagner chaque voyage.
-            </h1>
+		  <div className="hero-buttons">
+		    <Link to="/produits" className="btn-dark">
+		      Découvrir nos produits <ArrowRight size={18} />
+		    </Link>
 
-            <p className="hero-text">
-              Zifel présente une sélection de valises, sacs de voyage et
-              accessoires dans un showroom digital moderne, clair et
-              professionnel.
-            </p>
+		    <a href="#contact" className="btn-light">
+		      Nous contacter
+		    </a>
+		  </div>
+		</div>
+	      </div>
+	    </div>
+	  ))}
 
-            <div className="hero-buttons">
-              <Link to="/produits" className="btn-dark">
-                Découvrir nos produits <ArrowRight size={18} />
-              </Link>
-
-              <a href="#contact" className="btn-light">
-                Nous contacter
-              </a>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+	  <div className="slider-dots">
+	    {heroSlides.map((_, index) => (
+	      <button
+		key={index}
+		className={index === activeSlide ? "active" : ""}
+		onClick={() => setActiveSlide(index)}
+		aria-label={`Slide ${index + 1}`}
+	      />
+	    ))}
+	  </div>
+	</section>
 
       <section className="intro">
         <p className="small-title">Zifel bagagerie</p>
@@ -372,67 +409,118 @@ function Accueil() {
           font-size: 17px;
         }
 
-        .hero {
-          position: relative;
-          min-height: 88vh;
-          overflow: hidden;
-        }
+	.home-hero-slider {
+	  position: relative;
+	  width: 100%;
+	  height: clamp(560px, 86vh, 850px);
+	  overflow: hidden;
+	  background: #f7f7f7;
+	}
 
-        .hero-img {
-          position: absolute;
-          inset: 0;
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
+	.home-hero-slide {
+	  position: absolute;
+	  inset: 0;
+	  opacity: 0;
+	  visibility: hidden;
+	  transition: opacity 0.5s ease, visibility 0.5s ease;
+	}
 
-        .hero-overlay {
-          position: absolute;
-          inset: 0;
-          background: linear-gradient(
-            90deg,
-            rgba(255,255,255,0.95) 0%,
-            rgba(255,255,255,0.82) 42%,
-            rgba(255,255,255,0.25) 100%
-          );
-        }
+	.home-hero-slide.active {
+	  opacity: 1;
+	  visibility: visible;
+	  z-index: 2;
+	}
 
-        .hero-content {
-          position: relative;
-          z-index: 2;
-          min-height: 88vh;
-          display: flex;
-          align-items: center;
-          padding: 70px clamp(24px, 6vw, 80px);
-          max-width: 980px;
-        }
+	.home-hero-slide img {
+	  width: 100%;
+	  height: 100%;
+	  object-fit: contain;
+	  object-position: center;
+	  display: block;
+	}
 
-        .tag,
-        .small-title {
-          text-transform: uppercase;
-          letter-spacing: 5px;
-          color: #777;
-          font-size: 13px;
-          font-weight: 800;
-          margin-bottom: 20px;
-        }
+	.home-hero-overlay {
+	  position: absolute;
+	  inset: 0;
+	  z-index: 3;
+	  display: flex;
+	  align-items: center;
+	  padding: 70px clamp(24px, 6vw, 80px);
+	  color: white;
+	  background: linear-gradient(
+	    90deg,
+	    rgba(0, 0, 0, 0.45),
+	    rgba(0, 0, 0, 0.12),
+	    rgba(0, 0, 0, 0)
+	  );
+	}
 
-        .hero h1 {
-          font-size: clamp(44px, 7vw, 82px);
-          line-height: 1.02;
-          margin: 0 0 26px;
-          font-weight: 900;
-          max-width: 850px;
-        }
+	.home-hero-content {
+	  max-width: 850px;
+	}
 
-        .hero-text {
-          color: #444;
-          font-size: clamp(18px, 2vw, 22px);
-          line-height: 1.7;
-          max-width: 690px;
-          margin-bottom: 34px;
-        }
+	.home-hero-content h1 {
+	  font-size: clamp(44px, 7vw, 82px);
+	  line-height: 1.02;
+	  margin: 0 0 26px;
+	  font-weight: 900;
+	}
 
+	.slider-dots {
+	  position: absolute;
+	  left: 50%;
+	  bottom: 24px;
+	  transform: translateX(-50%);
+	  display: flex;
+	  gap: 10px;
+	  z-index: 10;
+	}
+
+	.slider-dots button {
+	  width: 42px;
+	  height: 4px;
+	  border: none;
+	  border-radius: 999px;
+	  background: rgba(255,255,255,0.55);
+	  cursor: pointer;
+	  padding: 0;
+	}
+
+	.slider-dots button.active {
+	  background: white;
+	}
+
+	@media (max-width: 620px) {
+	  .home-hero-slider {
+	    height: 540px;
+	  }
+
+	  .home-hero-slide img {
+	    object-fit: cover;
+	  }
+
+	  .home-hero-overlay {
+	    align-items: flex-end;
+	    padding: 22px;
+	    background: linear-gradient(
+	      0deg,
+	      rgba(0,0,0,0.65),
+	      rgba(0,0,0,0.15),
+	      rgba(0,0,0,0)
+	    );
+	  }
+
+	  .home-hero-content h1 {
+	    font-size: 1.9rem;
+	    line-height: 1.1;
+	  }
+
+	  .hero-text {
+	    font-size: 0.95rem;
+	  }
+	
+        }
+        
         .hero-buttons {
           display: flex;
           gap: 16px;

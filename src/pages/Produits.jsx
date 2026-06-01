@@ -15,21 +15,25 @@ import longBoardBag1 from "../assets/produits/LongBoardBag-1.jpeg";
 import longBoardBag2 from "../assets/produits/LongBoardBag-2.jpeg";
 import longBoardBag3 from "../assets/produits/LongBoardBag-3.jpeg";
 
+import slides1 from "../assets/produits/slides.jpg";
+import slides2 from "../assets/produits/slides2.jpg";
+import slides3 from "../assets/produits/slides3.jpg";
+
 const heroSlides = [
   {
     title: "Baggage cabine",
     text: "Un format pratique, moderne et pensé pour voyager léger.",
-    image: luluSingle,
+    image: slides3,
   },
   {
     title: "Baggagerie long sejour",
     text: "Des baggages pour accompagner les voyageurs pendant leur vacances.",
-    image: chevignonSingle,
+    image: slides2,
   },
   {
-    title: "Collections colorées",
+    title: "Sac Voyage",
     text: "Plusieurs coloris disponibles pour s’adapter à chaque style.",
-    image: longBoardBag2,
+    image: slides1,
   },
 ];
 

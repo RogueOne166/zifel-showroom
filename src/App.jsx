@@ -326,8 +326,14 @@ function Accueil() {
 
         body {
           margin: 0;
+          padding: 0;
+          overflow-x: hidden;
         }
-
+        
+        * {
+        	box-sizing: border-box;
+        }
+        
         .site {
           min-height: 100vh;
           width: 100%;
@@ -492,13 +498,20 @@ function Accueil() {
 
 	@media (max-width: 620px) {
 	  .home-hero-slider {
+	    width: 100%;
+	    max-width: 100%;
 	    height: 540px;
+	    margin: 0;
+	    padding: 0;
+	    overflow: hidden;
 	  }
 
 	  .home-hero-slide img {
+	    width: 100%;
+	    height: 100%;
 	    object-fit: cover;
+	    object-position: center;
 	  }
-
 	  .home-hero-overlay {
 	    align-items: flex-end;
 	    padding: 22px;

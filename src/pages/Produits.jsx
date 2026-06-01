@@ -278,14 +278,14 @@ export default function Produits() {
           color: white;
         }
 
-        .hero-slider {
-          position: relative;
-          width: 100%;
-          height: min(82vh, 760px);
-          overflow: hidden;
-          background: #f7f7f7;
-        }
-
+	.hero-slider {
+	  position: relative;
+	  width: 100%;
+	  height: 100vh;
+	  overflow: hidden;
+	  background: #f7f7f7;
+	}
+	
         .hero-slide {
           position: absolute;
           inset: 0;
@@ -293,14 +293,12 @@ export default function Produits() {
           animation: heroFade 15s infinite;
         }
 
-        .hero-slide img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          display: block;
-          transform: scale(1.04);
-          animation: heroZoom 15s infinite;
-        }
+	.hero-slide img {
+	  width: 100%;
+	  height: 100%;
+	  object-fit: cover;
+	  object-position: center;
+	}
 
         .slide-1 {
           animation-delay: 0s;
@@ -314,19 +312,26 @@ export default function Produits() {
           animation-delay: 10s;
         }
 
-        .hero-overlay {
-          position: absolute;
-          inset: 0;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          padding: clamp(30px, 7vw, 90px);
-          color: white;
-          background: linear-gradient(90deg, rgba(0,0,0,0.58), rgba(0,0,0,0.18), rgba(0,0,0,0.05));
-        }
+	.hero-overlay {
+	  position: absolute;
+	  inset: 0;
+	  display: flex;
+	  flex-direction: column;
+	  justify-content: center;
+	  padding: clamp(30px, 7vw, 90px);
+	  color: white;
+
+	  background: linear-gradient(
+	    90deg,
+	    rgba(0,0,0,0.45),
+	    rgba(0,0,0,0.15),
+	    rgba(0,0,0,0)
+	  );
+	}
 
         .hero-overlay h1 {
-          font-size: clamp(42px, 8vw, 96px);
+          font-size: clamp(60px, 9vw, 120px);
+          letter-spacing: -3px;
           line-height: 0.95;
           max-width: 850px;
           margin: 0 0 24px;

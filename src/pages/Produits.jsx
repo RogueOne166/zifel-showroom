@@ -18,7 +18,7 @@ import longBoardBag3 from "../assets/produits/LongBoardBag-3.jpeg";
 
 import slides1 from "../assets/produits/slides1.jpg";
 import slides2 from "../assets/produits/slides2.jpg";
-import slides from "../assets/produits/slides3.jpg";
+import slides3 from "../assets/produits/slides3.jpg";
 
 const heroSlides = [
   {
@@ -333,7 +333,7 @@ export default function Produits() {
           color: white;
           background: linear-gradient(
             90deg,
-            rgba(0,0,0,0.48),
+            rgba(0,0,0,0.58),
             rgba(0,0,0,0.16),
             rgba(0,0,0,0)
           );

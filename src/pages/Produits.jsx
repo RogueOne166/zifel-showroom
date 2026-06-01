@@ -372,25 +372,36 @@ export default function Produits() {
 	/* =========================
 	   MOBILE
 	========================= */
-
+	
 	@media (max-width: 620px) {
 	  .hero-slider {
 	    width: 100%;
-	    height: clamp(420px, 62vh, 580px);
+	    height: 540px;
 	    border-radius: 0;
+	    background: #f2f2f2;
 	  }
 
 	  .hero-slide img {
-	    object-fit: contain;
+	    width: 100%;
+	    height: 100%;
+	    object-fit: cover;
+	    object-position: center;
 	  }
 
 	  .hero-overlay {
 	    justify-content: flex-end;
 	    padding: 22px;
+	    background: linear-gradient(
+	      0deg,
+	      rgba(0,0,0,0.65),
+	      rgba(0,0,0,0.15),
+	      rgba(0,0,0,0)
+	    );
 	  }
 
 	  .hero-overlay h1 {
-	    font-size: 1.9rem;
+	    font-size: 1.7rem;
+	    letter-spacing: 6px;
 	  }
 
 	  .hero-overlay p {

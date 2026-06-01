@@ -423,19 +423,22 @@ function Accueil() {
 
 	.home-hero-slider {
 	  position: relative;
-	  width: 100%;
-	  max-width: 100%;
-	  height: clamp(560px, 86vh, 850px);
+	  width: 100vw;
+	  height: clamp(500px, 75vh, 750px);
 	  overflow: hidden;
-	  background: #f7f7f7;
+	  background: #fff;
+	  margin: 0;
+	  padding: 0;
 	}
 
 	.home-hero-slide {
 	  position: absolute;
 	  inset: 0;
+	  width: 100%;
+	  height: 100%;
 	  opacity: 0;
 	  visibility: hidden;
-	  transition: opacity 0.5s ease;
+	  transition: opacity 0.7s ease;
 	}
 
 	.home-hero-slide.active {
@@ -448,7 +451,7 @@ function Accueil() {
 	  width: 100%;
 	  height: 100%;
 	  display: block;
-	  object-fit: contain;
+	  object-fit: cover;      /* IMPORTANT */
 	  object-position: center;
 	}
 
@@ -458,27 +461,87 @@ function Accueil() {
 	  z-index: 3;
 	  display: flex;
 	  align-items: center;
-	  padding: 70px 24px;
+	  padding: 0 clamp(20px, 5vw, 80px);
 	  color: white;
 	  background: linear-gradient(
 	    90deg,
-	    rgba(0, 0, 0, 0.45),
-	    rgba(0, 0, 0, 0.12),
-	    rgba(0, 0, 0, 0)
+	    rgba(0,0,0,0.45) 0%,
+	    rgba(0,0,0,0.18) 35%,
+	    rgba(0,0,0,0) 65%
 	  );
 	}
 
 	.home-hero-content {
-	  max-width: 850px;
+	  max-width: 700px;
 	}
 
 	.home-hero-content h1 {
-	  font-size: clamp(44px, 7vw, 82px);
-	  line-height: 1.02;
-	  margin: 0 0 26px;
-	  font-weight: 900;
+	  font-size: clamp(3rem, 6vw, 5rem);
+	  line-height: 1.05;
+	  margin-bottom: 20px;
 	}
 
+	.slider-dots {
+	  position: absolute;
+	  left: 50%;
+	  bottom: 25px;
+	  transform: translateX(-50%);
+	  display: flex;
+	  gap: 10px;
+	  z-index: 10;
+	}
+
+	.slider-dots button {
+	  width: 35px;
+	  height: 4px;
+	  border: none;
+	  border-radius: 999px;
+	  background: rgba(255,255,255,0.4);
+	  cursor: pointer;
+	}
+
+	.slider-dots button.active {
+	  background: #fff;
+	}
+
+	/* MOBILE */
+
+	@media (max-width: 768px) {
+
+	  .home-hero-slider {
+	    height: 520px;
+	  }
+
+	  .home-hero-slide img {
+	    object-fit: cover;
+	    object-position: center center;
+	  }
+
+	  .home-hero-overlay {
+	    align-items: flex-end;
+	    padding: 24px;
+	    background: linear-gradient(
+	      0deg,
+	      rgba(0,0,0,0.7) 0%,
+	      rgba(0,0,0,0.25) 45%,
+	      rgba(0,0,0,0) 100%
+	    );
+	  }
+
+	  .home-hero-content {
+	    width: 100%;
+	    max-width: 100%;
+	  }
+
+	  .home-hero-content h1 {
+	    font-size: 2.3rem;
+	    line-height: 1.1;
+	  }
+
+	  .hero-text {
+	    font-size: 1rem;
+	  }
+	}
 	.slider-dots {
 	  position: absolute;
 	  left: 50%;

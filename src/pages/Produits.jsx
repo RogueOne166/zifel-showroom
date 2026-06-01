@@ -17,14 +17,14 @@ import longBoardBag3 from "../assets/produits/LongBoardBag-3.jpeg";
 
 const heroSlides = [
   {
-    title: "Le sac à dos Longboard",
+    title: "Baggage cabine",
     text: "Un format pratique, moderne et pensé pour voyager léger.",
-    image: longBoardBag3,
+    image: 2E0A5129,
   },
   {
-    title: "Bagagerie sous-siège",
-    text: "Des sacs compacts pour accompagner les voyageurs au quotidien.",
-    image: longBoardBag1,
+    title: "Baggagerie long sejour",
+    text: "Des baggages pour accompagner les voyageurs pendant leur vacances.",
+    image: 2E0A0490,
   },
   {
     title: "Collections colorées",
@@ -648,9 +648,13 @@ export default function Produits() {
         }
 
         @media (max-width: 620px) {
-          .hero-slider {
-            height: 620px;
-          }
+	.hero-slider {
+	  position: relative;
+	  width: 100%;
+	  height: 75vh;
+	  overflow: hidden;
+	  background: #f7f7f7;
+	}
 
           .hero-overlay {
             background: linear-gradient(180deg, rgba(0,0,0,0.65), rgba(0,0,0,0.25));

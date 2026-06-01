@@ -375,7 +375,8 @@ export default function Produits() {
 	
 	@media (max-width: 620px) {
 	  .hero-slider {
-	    width: 100%;
+	    width: 100vw;
+	    margin-left: calc(50%-50vw)
 	    height: 540px;
 	    border-radius: 0;
 	    background: #f2f2f2;

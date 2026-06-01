@@ -8,7 +8,7 @@ import Services from "./pages/Services";
 
 import slides1 from "./assets/produits/slides1.png";
 import slides2 from "./assets/produits/slides2.png";
-import slides3 from "./assets/produits/slides3.png";
+
 
 import {
   ArrowRight,
@@ -83,12 +83,8 @@ function Accueil() {
 	    title: "Nous avons pensé à tout",
 	    text: "Des collections modernes pour accompagner chaque voyage.",
 	    image: slides2,
-	  },
-	  {
-	    title: "Zifel showroom",
-	    text: "Une sélection claire, professionnelle et adaptée aux voyageurs.",
-	    image: slides3,
-	  },
+	  }
+
     ];
 
      useEffect(() => {

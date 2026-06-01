@@ -18,7 +18,6 @@ import longBoardBag3 from "../assets/produits/LongBoardBag-3.jpeg";
 
 import slides1 from "../assets/produits/slides1.png";
 import slides2 from "../assets/produits/slides2.png";
-import slides3 from "../assets/produits/slides3.png";
 
 const heroSlides = [
   {
@@ -30,10 +29,6 @@ const heroSlides = [
   {
     text: "Nous avons pensé à tout",
     image: slides2,
-  },
-  
-  {
-    image: slides3,
   }
 ];
 

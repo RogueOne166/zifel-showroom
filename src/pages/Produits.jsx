@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import longboard from "../assets/produits/00-01 LGB-WA.jpg";
@@ -21,17 +22,17 @@ import slides3 from "../assets/produits/slides3.jpg";
 
 const heroSlides = [
   {
-    title: "Baggage cabine",
+    title: "Bagage cabine",
     text: "Un format pratique, moderne et pensé pour voyager léger.",
     image: slides3,
   },
   {
-    title: "Baggagerie long sejour",
-    text: "Des baggages pour accompagner les voyageurs pendant leur vacances.",
+    title: "Bagagerie long séjour",
+    text: "Des bagages pour accompagner les voyageurs pendant leurs vacances.",
     image: slides2,
   },
   {
-    title: "Sac Voyage",
+    title: "Sac voyage",
     text: "Plusieurs coloris disponibles pour s’adapter à chaque style.",
     image: slides1,
   },
@@ -76,6 +77,16 @@ const longboardBags = [
 ];
 
 export default function Produits() {
+  const [activeSlide, setActiveSlide] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveSlide((current) => (current + 1) % heroSlides.length);
+    }, 4500);
+
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <main className="products-page">
       <div className="back-home">
@@ -84,7 +95,10 @@ export default function Produits() {
 
       <section className="hero-slider">
         {heroSlides.map((slide, index) => (
-          <div className={`hero-slide slide-${index + 1}`} key={slide.title}>
+          <div
+            className={`hero-slide ${index === activeSlide ? "active" : ""}`}
+            key={slide.title}
+          >
             <img src={slide.image} alt={slide.title} />
 
             <div className="hero-overlay">
@@ -96,9 +110,14 @@ export default function Produits() {
         ))}
 
         <div className="slider-dots">
-          <span></span>
-          <span></span>
-          <span></span>
+          {heroSlides.map((_, index) => (
+            <button
+              key={index}
+              className={index === activeSlide ? "active" : ""}
+              onClick={() => setActiveSlide(index)}
+              aria-label={`Slide ${index + 1}`}
+            />
+          ))}
         </div>
       </section>
 
@@ -121,7 +140,6 @@ export default function Produits() {
           {collections.map((item) => (
             <div className="collection-card" key={item.name}>
               <img src={item.image} alt={item.name} />
-
               <div className="collection-info">
                 <h3>{item.name}</h3>
                 <p>{item.text}</p>
@@ -187,13 +205,6 @@ export default function Produits() {
             pour les clients qui recherchent un bagage pratique avec une vraie
             identité visuelle.
           </p>
-
-          <div className="color-row">
-            <span className="color-dot pink"></span>
-            <span className="color-dot black"></span>
-            <span className="color-dot red"></span>
-            <span className="color-dot gray"></span>
-          </div>
         </div>
       </section>
 
@@ -248,13 +259,12 @@ export default function Produits() {
         }
 
         .back-home {
-          padding: 26px clamp(20px, 5vw, 70px);
+          padding: 18px clamp(20px, 5vw, 70px);
           background: white;
         }
 
         .back-home a {
           display: inline-flex;
-          align-items: center;
           text-decoration: none;
           color: #111;
           font-weight: 800;
@@ -282,134 +292,94 @@ export default function Produits() {
           color: white;
         }
 
-	.hero-slider {
-	  position: relative;
-	  width: 100%;
-	  height: 68vh;
-	  max-height: 680px;
-	  min-height: 520px;
-	  overflow: hidden;
-	  background: #f7f7f7;
-	}
+        .hero-slider {
+          position: relative;
+          width: 100%;
+          height: 68vh;
+          max-height: 680px;
+          min-height: 500px;
+          overflow: hidden;
+          background: #f7f7f7;
+        }
 
-	.hero-slide {
-	  position: absolute;
-	  inset: 0;
-	  opacity: 0;
-	  animation: heroFade 15s infinite;
-	}
+        .hero-slide {
+          position: absolute;
+          inset: 0;
+          opacity: 0;
+          visibility: hidden;
+          transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
 
-	.hero-slide img {
-	  width: 100%;
-	  height: 100%;
-	  object-fit: cover;
-	  object-position: center;
-	}
+        .hero-slide.active {
+          opacity: 1;
+          visibility: visible;
+          z-index: 2;
+        }
 
-	.hero-overlay {
-	  position: absolute;
-	  inset: 0;
-	  display: flex;
-	  flex-direction: column;
-	  justify-content: center;
-	  padding: clamp(26px, 5vw, 70px);
-	  color: white;
-	  background: linear-gradient(
-	    90deg,
-	    rgba(0,0,0,0.42),
-	    rgba(0,0,0,0.12),
-	    rgba(0,0,0,0)
-	  );
-	}
+        .hero-slide img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center;
+          display: block;
+        }
 
-	.hero-overlay h1 {
-	  font-size: clamp(42px, 7vw, 86px);
-	  letter-spacing: -2px;
-	  line-height: 1;
-	  max-width: 760px;
-	  margin: 0 0 20px;
-	  font-weight: 950;
-	  text-transform: uppercase;
-	}
+        .hero-overlay {
+          position: absolute;
+          inset: 0;
+          z-index: 3;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          padding: clamp(26px, 5vw, 70px);
+          color: white;
+          background: linear-gradient(
+            90deg,
+            rgba(0,0,0,0.48),
+            rgba(0,0,0,0.16),
+            rgba(0,0,0,0)
+          );
+        }
 
-	.hero-overlay p:last-child {
-	  font-size: clamp(16px, 1.6vw, 21px);
-	  line-height: 1.5;
-	  max-width: 560px;
-	  margin: 0;
-	}
+        .hero-overlay h1 {
+          font-size: clamp(42px, 7vw, 86px);
+          letter-spacing: -2px;
+          line-height: 1;
+          max-width: 760px;
+          margin: 0 0 20px;
+          font-weight: 950;
+          text-transform: uppercase;
+        }
 
-	@media (max-width: 620px) {
-	  .hero-slider {
-	    height: 460px;
-	    min-height: 460px;
-	    max-height: 460px;
-	  }
-
-	  .hero-slide img {
-	    object-position: center;
-	  }
-
-	  .hero-overlay {
-	    justify-content: flex-end;
-	    padding: 0 22px 62px;
-	    background: linear-gradient(
-	      180deg,
-	      rgba(0,0,0,0.15),
-	      rgba(0,0,0,0.65)
-	    );
-	  }
-
-	  .hero-overlay h1 {
-	    font-size: clamp(34px, 11vw, 48px);
-	    line-height: 1.02;
-	    letter-spacing: -1px;
-	    max-width: 100%;
-	    margin-bottom: 14px;
-	  }
-
-	  .hero-overlay p:last-child {
-	    font-size: 15px;
-	    line-height: 1.45;
-	    max-width: 95%;
-	  }
-
-	  .small-title.white {
-	    font-size: 11px;
-	    letter-spacing: 3px;
-	    margin-bottom: 10px;
-	  }
-	}
+        .hero-overlay p:last-child {
+          font-size: clamp(16px, 1.6vw, 21px);
+          line-height: 1.5;
+          max-width: 560px;
+          margin: 0;
+        }
 
         .slider-dots {
           position: absolute;
           left: 50%;
-          bottom: 26px;
+          bottom: 24px;
           transform: translateX(-50%);
           display: flex;
           gap: 10px;
-          z-index: 5;
+          z-index: 10;
         }
 
-        .slider-dots span {
+        .slider-dots button {
           width: 42px;
           height: 4px;
+          border: none;
           border-radius: 999px;
-          background: rgba(255,255,255,0.75);
+          background: rgba(255,255,255,0.55);
+          cursor: pointer;
+          padding: 0;
         }
 
-        @keyframes heroFade {
-          0% { opacity: 0; }
-          6% { opacity: 1; }
-          28% { opacity: 1; }
-          34% { opacity: 0; }
-          100% { opacity: 0; }
-        }
-
-        @keyframes heroZoom {
-          0% { transform: scale(1.04); }
-          34% { transform: scale(1.1); }
-          100% { transform: scale(1.04); }
+        .slider-dots button.active {
+          background: white;
         }
 
         .intro-section {
@@ -579,29 +549,6 @@ export default function Produits() {
           display: block;
         }
 
-        .color-row {
-          display: flex;
-          gap: 14px;
-          margin-top: 28px;
-        }
-
-        .color-dot {
-          width: 34px;
-          height: 34px;
-          border-radius: 999px;
-          border: 2px solid white;
-          box-shadow: 0 0 0 1px #ddd;
-        }
-
-        .color-dot.pink { background: #f3b8b6; }
-        .color-dot.black { background: #111; }
-        .color-dot.red { background: #f24444; }
-        .color-dot.gray { background: #777; }
-
-        .bags-section {
-          background: white;
-        }
-
         .bags-card {
           background: #f7f7f7;
           border-radius: 38px;
@@ -683,18 +630,44 @@ export default function Produits() {
         }
 
         @media (max-width: 620px) {
-	.hero-slider {
-	  position: relative;
-	  width: 100%;
-	  height: 75vh;
-	  overflow: hidden;
-	  background: #f7f7f7;
-	}
+          .hero-slider {
+            height: 460px;
+            min-height: 460px;
+            max-height: 460px;
+          }
+
+          .hero-slide img {
+            object-position: center;
+          }
 
           .hero-overlay {
-            background: linear-gradient(180deg, rgba(0,0,0,0.65), rgba(0,0,0,0.25));
             justify-content: flex-end;
-            padding-bottom: 80px;
+            padding: 0 22px 62px;
+            background: linear-gradient(
+              180deg,
+              rgba(0,0,0,0.05),
+              rgba(0,0,0,0.72)
+            );
+          }
+
+          .hero-overlay h1 {
+            font-size: clamp(32px, 10vw, 46px);
+            line-height: 1.04;
+            letter-spacing: -1px;
+            max-width: 100%;
+            margin-bottom: 14px;
+          }
+
+          .hero-overlay p:last-child {
+            font-size: 15px;
+            line-height: 1.45;
+            max-width: 95%;
+          }
+
+          .small-title.white {
+            font-size: 11px;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
           }
 
           .collections-grid,

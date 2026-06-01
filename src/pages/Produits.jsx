@@ -11,6 +11,28 @@ import detail1 from "../assets/produits/LLR7 50cm black.jpg";
 import detail2 from "../assets/produits/LLR7 50cm black side.jpg";
 import detail3 from "../assets/produits/LLR7 50cm black top view.jpg";
 
+import longBoardBag1 from "../assets/produits/LongBoardBag-1.jpeg";
+import longBoardBag2 from "../assets/produits/LongBoardBag-2.jpeg";
+import longBoardBag3 from "../assets/produits/LongBoardBag-3.jpeg";
+
+const heroSlides = [
+  {
+    title: "Le sac à dos Longboard",
+    text: "Un format pratique, moderne et pensé pour voyager léger.",
+    image: longBoardBag3,
+  },
+  {
+    title: "Bagagerie sous-siège",
+    text: "Des sacs compacts pour accompagner les voyageurs au quotidien.",
+    image: longBoardBag1,
+  },
+  {
+    title: "Collections colorées",
+    text: "Plusieurs coloris disponibles pour s’adapter à chaque style.",
+    image: longBoardBag2,
+  },
+];
+
 const collections = [
   {
     name: "Longboard",
@@ -34,36 +56,61 @@ const collections = [
   },
 ];
 
+const longboardBags = [
+  {
+    name: "Sac à dos sous-siège",
+    image: longBoardBag1,
+  },
+  {
+    name: "Sac à dos Longboard gris",
+    image: longBoardBag2,
+  },
+  {
+    name: "Collection sacs Longboard",
+    image: longBoardBag3,
+  },
+];
+
 export default function Produits() {
   return (
     <main className="products-page">
-    {/* Retour accueil */}
-	<div className="back-home">
-	  <Link to="/">
-	    ← Retour à l'accueil
-	  </Link>
-	</div>
-      {/* HERO */}
-      <section className="products-hero">
-        <div>
-          <p className="small-title">Showroom Zifel</p>
-          <h1>Nos collections de bagagerie</h1>
-          <p>
-            Découvrez une sélection de valises, sacs de voyage et accessoires
-            conçus pour répondre aux besoins des voyageurs et des magasins.
-          </p>
-        </div>
+      <div className="back-home">
+        <Link to="/">← Retour à l'accueil</Link>
+      </div>
 
-        <div className="hero-product-card">
-          <img src={chevignonSingle} alt="Valise Chevignon" />
+      <section className="hero-slider">
+        {heroSlides.map((slide, index) => (
+          <div className={`hero-slide slide-${index + 1}`} key={slide.title}>
+            <img src={slide.image} alt={slide.title} />
+
+            <div className="hero-overlay">
+              <p className="small-title white">Showroom Zifel</p>
+              <h1>{slide.title}</h1>
+              <p>{slide.text}</p>
+            </div>
+          </div>
+        ))}
+
+        <div className="slider-dots">
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
       </section>
 
-      {/* COLLECTIONS */}
+      <section className="intro-section">
+        <p className="small-title">Nos produits</p>
+        <h2>Une sélection de bagagerie pensée pour les magasins et les voyageurs</h2>
+        <p>
+          Zifel propose des valises, sacs à dos, sacs de voyage et accessoires
+          avec des collections adaptées à différents styles, besoins et univers.
+        </p>
+      </section>
+
       <section className="collections-section">
         <div className="section-heading">
           <p className="small-title">Collections</p>
-          <h2>Des gammes pour chaque univers de voyage</h2>
+          <h2>Explorer nos catégories</h2>
         </div>
 
         <div className="collections-grid">
@@ -80,7 +127,26 @@ export default function Produits() {
         </div>
       </section>
 
-      {/* FEATURED */}
+      <section className="longboard-section">
+        <div className="section-heading center">
+          <p className="small-title">Nouveauté</p>
+          <h2>Sacs à dos Longboard</h2>
+          <p>
+            Une gamme pratique, légère et disponible en plusieurs coloris,
+            idéale pour le voyage, le quotidien et les formats sous-siège.
+          </p>
+        </div>
+
+        <div className="bags-grid">
+          {longboardBags.map((bag) => (
+            <div className="bag-card" key={bag.name}>
+              <img src={bag.image} alt={bag.name} />
+              <h3>{bag.name}</h3>
+            </div>
+          ))}
+        </div>
+      </section>
+
       <section className="featured-section">
         <div className="featured-text">
           <p className="small-title">Produit vedette</p>
@@ -104,7 +170,6 @@ export default function Produits() {
         </div>
       </section>
 
-      {/* LULU */}
       <section className="lulu-section">
         <div className="lulu-image">
           <img src={luluSet} alt="Collection Lulu Castagnette" />
@@ -128,7 +193,6 @@ export default function Produits() {
         </div>
       </section>
 
-      {/* SACS */}
       <section className="bags-section">
         <div className="bags-card">
           <div>
@@ -145,7 +209,6 @@ export default function Produits() {
         </div>
       </section>
 
-      {/* GALERIE */}
       <section className="gallery-section">
         <div className="section-heading center">
           <p className="small-title">Détails produits</p>
@@ -157,10 +220,11 @@ export default function Produits() {
           <img src={detail2} alt="Détail produit côté" />
           <img src={detail3} alt="Détail produit dessus" />
           <img src={luluSingle} alt="Valise Lulu Castagnette" />
+          <img src={chevignonSingle} alt="Valise Chevignon" />
+          <img src={frenchWorld} alt="French World" />
         </div>
       </section>
 
-      {/* CTA */}
       <section className="products-cta">
         <h2>Vous souhaitez découvrir nos collections ?</h2>
         <p>
@@ -179,55 +243,166 @@ export default function Produits() {
           overflow-x: hidden;
         }
 
+        .back-home {
+          padding: 26px clamp(20px, 5vw, 70px);
+          background: white;
+        }
+
+        .back-home a {
+          display: inline-flex;
+          align-items: center;
+          text-decoration: none;
+          color: #111;
+          font-weight: 800;
+          padding: 12px 20px;
+          border-radius: 999px;
+          background: #f3f3f3;
+          transition: 0.3s;
+        }
+
+        .back-home a:hover {
+          background: #e8e8e8;
+          transform: translateX(-3px);
+        }
+
         .small-title {
           text-transform: uppercase;
           letter-spacing: 4px;
           color: #777;
           font-size: 13px;
-          font-weight: 800;
-          margin-bottom: 18px;
-        }
-
-        .products-hero {
-          padding: 90px clamp(22px, 6vw, 80px);
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 55px;
-          align-items: center;
-          background: linear-gradient(180deg, #f8f8f8, #ffffff);
-        }
-
-        .products-hero h1 {
-          font-size: clamp(44px, 7vw, 82px);
-          line-height: 1.02;
-          margin: 0 0 24px;
           font-weight: 900;
-          max-width: 800px;
+          margin-bottom: 16px;
         }
 
-        .products-hero p:last-child {
-          font-size: 20px;
-          color: #555;
-          line-height: 1.7;
-          max-width: 650px;
+        .small-title.white {
+          color: white;
         }
 
-        .hero-product-card {
-          background: #f7f7f7;
-          border-radius: 38px;
-          padding: 35px;
-          box-shadow: 0 18px 50px rgba(0,0,0,0.1);
-          border: 1px solid #eee;
-        }
-
-        .hero-product-card img {
+        .hero-slider {
+          position: relative;
           width: 100%;
-          height: 520px;
-          object-fit: contain;
+          height: min(82vh, 760px);
+          overflow: hidden;
+          background: #f7f7f7;
+        }
+
+        .hero-slide {
+          position: absolute;
+          inset: 0;
+          opacity: 0;
+          animation: heroFade 15s infinite;
+        }
+
+        .hero-slide img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
           display: block;
+          transform: scale(1.04);
+          animation: heroZoom 15s infinite;
+        }
+
+        .slide-1 {
+          animation-delay: 0s;
+        }
+
+        .slide-2 {
+          animation-delay: 5s;
+        }
+
+        .slide-3 {
+          animation-delay: 10s;
+        }
+
+        .hero-overlay {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          padding: clamp(30px, 7vw, 90px);
+          color: white;
+          background: linear-gradient(90deg, rgba(0,0,0,0.58), rgba(0,0,0,0.18), rgba(0,0,0,0.05));
+        }
+
+        .hero-overlay h1 {
+          font-size: clamp(42px, 8vw, 96px);
+          line-height: 0.95;
+          max-width: 850px;
+          margin: 0 0 24px;
+          font-weight: 950;
+          text-transform: uppercase;
+        }
+
+        .hero-overlay p:last-child {
+          font-size: clamp(17px, 2vw, 24px);
+          line-height: 1.6;
+          max-width: 620px;
+          margin: 0;
+        }
+
+        .slider-dots {
+          position: absolute;
+          left: 50%;
+          bottom: 26px;
+          transform: translateX(-50%);
+          display: flex;
+          gap: 10px;
+          z-index: 5;
+        }
+
+        .slider-dots span {
+          width: 42px;
+          height: 4px;
+          border-radius: 999px;
+          background: rgba(255,255,255,0.75);
+        }
+
+        @keyframes heroFade {
+          0% { opacity: 0; }
+          6% { opacity: 1; }
+          28% { opacity: 1; }
+          34% { opacity: 0; }
+          100% { opacity: 0; }
+        }
+
+        @keyframes heroZoom {
+          0% { transform: scale(1.04); }
+          34% { transform: scale(1.1); }
+          100% { transform: scale(1.04); }
+        }
+
+        .intro-section {
+          padding: 90px clamp(22px, 6vw, 80px);
+          text-align: center;
+          max-width: 1050px;
+          margin: auto;
+        }
+
+        .intro-section h2,
+        .section-heading h2,
+        .featured-text h2,
+        .lulu-text h2,
+        .bags-card h2,
+        .products-cta h2 {
+          font-size: clamp(34px, 5vw, 58px);
+          line-height: 1.08;
+          margin: 0 0 22px;
+          font-weight: 950;
+        }
+
+        .intro-section p:last-child,
+        .section-heading p,
+        .featured-text p,
+        .lulu-text p,
+        .bags-card p {
+          color: #555;
+          font-size: 19px;
+          line-height: 1.7;
         }
 
         .collections-section,
+        .longboard-section,
         .featured-section,
         .lulu-section,
         .bags-section,
@@ -246,40 +421,31 @@ export default function Produits() {
           margin-right: auto;
         }
 
-        .section-heading h2,
-        .featured-text h2,
-        .lulu-text h2,
-        .bags-card h2,
-        .products-cta h2 {
-          font-size: clamp(36px, 5vw, 58px);
-          line-height: 1.08;
-          margin: 0 0 24px;
-          font-weight: 900;
-        }
-
         .collections-grid {
           display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 30px;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 24px;
         }
 
-        .collection-card {
-          background: #f7f7f7;
+        .collection-card,
+        .bag-card {
+          background: #f8f8f8;
           border-radius: 34px;
           overflow: hidden;
           border: 1px solid #eee;
-          box-shadow: 0 14px 40px rgba(0,0,0,0.06);
+          box-shadow: 0 14px 35px rgba(0,0,0,0.06);
           transition: 0.25s ease;
         }
 
-        .collection-card:hover {
+        .collection-card:hover,
+        .bag-card:hover {
           transform: translateY(-8px);
           box-shadow: 0 22px 50px rgba(0,0,0,0.1);
         }
 
         .collection-card img {
           width: 100%;
-          height: 380px;
+          height: 300px;
           object-fit: contain;
           background: white;
           display: block;
@@ -287,19 +453,43 @@ export default function Produits() {
         }
 
         .collection-info {
-          padding: 30px;
+          padding: 26px;
         }
 
-        .collection-info h3 {
-          font-size: 30px;
-          margin: 0 0 12px;
+        .collection-info h3,
+        .bag-card h3 {
+          font-size: 25px;
+          margin: 0 0 10px;
         }
 
         .collection-info p {
           color: #555;
-          font-size: 17px;
+          font-size: 16px;
           line-height: 1.6;
           margin: 0;
+        }
+
+        .longboard-section {
+          background: #f7f7f7;
+        }
+
+        .bags-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 28px;
+        }
+
+        .bag-card img {
+          width: 100%;
+          height: 430px;
+          object-fit: contain;
+          background: white;
+          display: block;
+          padding: 20px;
+        }
+
+        .bag-card h3 {
+          padding: 24px;
         }
 
         .featured-section,
@@ -308,21 +498,12 @@ export default function Produits() {
           grid-template-columns: 1fr 1.2fr;
           gap: 55px;
           align-items: center;
-          background: #f7f7f7;
+          background: white;
         }
 
         .lulu-section {
-          background: white;
+          background: #f7f7f7;
           grid-template-columns: 1.2fr 1fr;
-        }
-
-        .featured-text p,
-        .lulu-text p,
-        .bags-card p {
-          color: #555;
-          font-size: 19px;
-          line-height: 1.7;
-          max-width: 620px;
         }
 
         .feature-list {
@@ -378,11 +559,11 @@ export default function Produits() {
         .color-dot.gray { background: #777; }
 
         .bags-section {
-          background: #f7f7f7;
+          background: white;
         }
 
         .bags-card {
-          background: white;
+          background: #f7f7f7;
           border-radius: 38px;
           padding: clamp(28px, 5vw, 55px);
           display: grid;
@@ -402,7 +583,7 @@ export default function Produits() {
 
         .gallery-grid {
           display: grid;
-          grid-template-columns: repeat(4, 1fr);
+          grid-template-columns: repeat(3, 1fr);
           gap: 24px;
         }
 
@@ -440,58 +621,48 @@ export default function Produits() {
           font-weight: 900;
           display: inline-block;
         }
-        
-        .back-home {
-	  padding: 30px 40px 0;
-	}
 
-	.back-home a {
-	  display: inline-flex;
-	  align-items: center;
-	  gap: 8px;
-	  text-decoration: none;
-	  color: #111;
-	  font-weight: 700;
-	  padding: 12px 20px;
-	  border-radius: 999px;
-	  background: #f5f5f5;
-	  transition: 0.3s;
-	}
+        @media (max-width: 1050px) {
+          .collections-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
 
-	.back-home a:hover {
-	  background: #e9e9e9;
-	  transform: translateX(-3px);
-	}
+          .bags-grid {
+            grid-template-columns: 1fr;
+          }
 
-        @media (max-width: 950px) {
-          .products-hero,
           .featured-section,
           .lulu-section,
           .bags-card {
             grid-template-columns: 1fr;
           }
 
-          .collections-grid {
-            grid-template-columns: 1fr;
-          }
-
           .gallery-grid {
             grid-template-columns: repeat(2, 1fr);
           }
-
-          .hero-product-card img,
-          .featured-image img,
-          .lulu-image img,
-          .bags-card img {
-            height: 360px;
-          }
         }
 
-        @media (max-width: 560px) {
+        @media (max-width: 620px) {
+          .hero-slider {
+            height: 620px;
+          }
+
+          .hero-overlay {
+            background: linear-gradient(180deg, rgba(0,0,0,0.65), rgba(0,0,0,0.25));
+            justify-content: flex-end;
+            padding-bottom: 80px;
+          }
+
+          .collections-grid,
           .gallery-grid {
             grid-template-columns: 1fr;
           }
 
+          .collection-card img,
+          .bag-card img,
+          .featured-image img,
+          .lulu-image img,
+          .bags-card img,
           .gallery-grid img {
             height: 320px;
           }

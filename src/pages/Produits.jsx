@@ -15,7 +15,7 @@ import longBoardBag1 from "../assets/produits/LongBoardBag-1.jpeg";
 import longBoardBag2 from "../assets/produits/LongBoardBag-2.jpeg";
 import longBoardBag3 from "../assets/produits/LongBoardBag-3.jpeg";
 
-import slides1 from "../assets/produits/slides.jpg";
+import slides1 from "../assets/produits/slides1.jpg";
 import slides2 from "../assets/produits/slides2.jpg";
 import slides3 from "../assets/produits/slides3.jpg";
 
